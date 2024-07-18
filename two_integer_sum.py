@@ -16,6 +16,14 @@ Output: [1,2]
 
 the returned indexes must be zero indexed.
 
+if we dont need our own binary search implementation we can just use 
+
+try:
+    numbers[i:].index(to_find)
+    //found here
+except ValueError:
+    // not found
+
 """
 
 
