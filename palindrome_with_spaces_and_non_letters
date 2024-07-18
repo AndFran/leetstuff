@@ -1,0 +1,29 @@
+class Solution:
+
+    def isLetter(self, char: str):
+        return char.isalpha() or char.isnumeric()
+
+    def isPalindrome(self, s: str) -> bool:
+        start = 0
+        end = len(s)-1
+        mid = len(s) // 2
+        while start < mid+1:
+            left = s[start]
+            right = s[end]
+
+            if not self.isLetter(left):
+                start += 1
+            if not self.isLetter(right):
+                end -= 1
+
+            if self.isLetter(left) and self.isLetter(right):
+                left = left.lower()
+                right = right.lower()
+                if right != left:
+                    return False
+                start += 1
+                end -= 1
+
+        return True
+
+        
