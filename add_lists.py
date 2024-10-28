@@ -43,13 +43,20 @@ def add_lists(list1: Node, list2: Node):
     tail = dummy_head
     carry = 0
 
-    while current1:
-        if current2 is None:
-            current2_val = 0
-        else:
+    while True:
+
+        if current1 is None and current2 is None:
+            break
+
+        current1_val = 0
+        current2_val = 0
+
+        if current1:
+            current1_val = current1.val
+        if current2:
             current2_val = current2.val
 
-        result = current1.val + current2_val + carry
+        result = current1_val + current2_val + carry
         if carry > 0:
             carry = 0
         if result > 9:
@@ -58,10 +65,12 @@ def add_lists(list1: Node, list2: Node):
 
         tail.next = Node(result)
 
-        current1 = current1.next
+        if current1:
+            current1 = current1.next
 
-        if current2 is not None:
+        if current2:
             current2 = current2.next
+
         tail = tail.next
 
     if carry > 0:
